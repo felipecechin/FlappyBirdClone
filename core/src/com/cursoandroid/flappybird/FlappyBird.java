@@ -81,7 +81,7 @@ public class FlappyBird extends ApplicationAdapter {
 		canoTopo = new Texture("cano_topo.png");
 
 		camera = new OrthographicCamera();
-		camera.position.set(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, 0);
+		camera.position.set(VIRTUAL_WIDTH/2, VIRTUAL_HEIGHT/2, 0);
 		viewport = new StretchViewport(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, camera);
 
 		larguraDispositivo = VIRTUAL_WIDTH;
@@ -99,6 +99,9 @@ public class FlappyBird extends ApplicationAdapter {
 
 	@Override
 	public void render () {
+		camera.update();
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+
 		deltaTime = Gdx.graphics.getDeltaTime();
 		variacao += deltaTime * 10;
 		if (variacao > 2) variacao = 0;
